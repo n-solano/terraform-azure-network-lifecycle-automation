@@ -38,7 +38,6 @@ Log Analytics - Centralized logging with KQL query support
 
 ## 📐 Architecture
 
-
 ┌──────────────────────────────────────────┐
 │ Virtual Network (10.1.0.0/16) │
 │ │
