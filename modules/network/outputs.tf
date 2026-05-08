@@ -1,4 +1,4 @@
-﻿output "vnet_id" {
+output "vnet_id" {
   description = "Virtual Network ID"
   value       = azurerm_virtual_network.main.id
 }
@@ -17,9 +17,9 @@ output "subnet_details" {
   description = "Detailed subnet information"
   value = {
     for k, v in azurerm_subnet.main : k => {
-      name            = v.name
-      id              = v.id
-      address_prefix  = v.address_prefixes[0]
+      name           = v.name
+      id             = v.id
+      address_prefix = v.address_prefixes[0]
     }
   }
 }

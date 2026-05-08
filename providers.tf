@@ -1,6 +1,6 @@
-﻿terraform {
+terraform {
   required_version = ">= 1.5.0"
-  
+
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
@@ -19,7 +19,7 @@ provider "azurerm" {
       prevent_deletion_if_contains_resources = false
     }
   }
-  
+
   # Free tier optimization - skip unnecessary API registrations
   skip_provider_registration = true
 }

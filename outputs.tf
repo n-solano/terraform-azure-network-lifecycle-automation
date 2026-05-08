@@ -1,4 +1,4 @@
-﻿# ============================================
+# ============================================
 # OUTPUTS
 # ============================================
 
@@ -13,15 +13,15 @@ output "resource_group" {
 output "network" {
   description = "Network information"
   value = {
-    vnet_name   = module.network.vnet_name
-    vnet_id     = module.network.vnet_id
+    vnet_name     = module.network.vnet_name
+    vnet_id       = module.network.vnet_id
     address_space = var.vnet_address_space
   }
 }
 
 output "subnets" {
   description = "Subnet details"
-  value = module.network.subnet_details
+  value       = module.network.subnet_details
 }
 
 output "security" {
@@ -43,8 +43,8 @@ output "monitoring" {
 output "connection_strings" {
   description = "Useful connection information"
   value = {
-    vnet_uri           = "/subscriptions/.../resourceGroups/${azurerm_resource_group.lab.name}/providers/Microsoft.Network/virtualNetworks/${module.network.vnet_name}"
-    log_analytics_uri  = "/subscriptions/.../resourceGroups/${azurerm_resource_group.lab.name}/providers/Microsoft.OperationalInsights/workspaces/${module.monitoring.workspace_name}"
+    vnet_uri          = "/subscriptions/.../resourceGroups/${azurerm_resource_group.lab.name}/providers/Microsoft.Network/virtualNetworks/${module.network.vnet_name}"
+    log_analytics_uri = "/subscriptions/.../resourceGroups/${azurerm_resource_group.lab.name}/providers/Microsoft.OperationalInsights/workspaces/${module.monitoring.workspace_name}"
   }
   sensitive = false
 }

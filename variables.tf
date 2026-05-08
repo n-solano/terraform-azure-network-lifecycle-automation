@@ -1,4 +1,4 @@
-﻿# ============================================
+# ============================================
 # REQUIRED VARIABLES
 # ============================================
 
@@ -12,7 +12,7 @@ variable "environment" {
   description = "Environment name"
   type        = string
   default     = "dev"
-  
+
   validation {
     condition     = contains(["dev", "test", "demo"], var.environment)
     error_message = "Environment must be dev, test, or demo."
@@ -29,6 +29,12 @@ variable "alert_email" {
   description = "Email for network alerts"
   type        = string
   default     = "admin@example.com"
+}
+
+variable "allowed_admin_ips" {
+  description = "Whitelisted public IPs allowed for SSH access"
+  type        = list(string)
+  default     = ["10.20.19.4/32"]
 }
 
 # ============================================

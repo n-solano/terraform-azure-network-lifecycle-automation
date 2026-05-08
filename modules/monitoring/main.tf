@@ -1,4 +1,4 @@
-﻿# ============================================
+# ============================================
 # MONITORING MODULE - FREE TIER COMPATIBLE
 # ============================================
 
@@ -13,8 +13,8 @@ resource "azurerm_log_analytics_workspace" "main" {
   resource_group_name = var.resource_group_name
   location            = var.location
   sku                 = "PerGB2018"
-  retention_in_days   = 30  # Keep within free limits
-  
+  retention_in_days   = 30 # Keep within free limits
+
   tags = var.tags
 }
 
@@ -24,13 +24,13 @@ resource "azurerm_monitor_action_group" "main" {
   resource_group_name = var.resource_group_name
   short_name          = "NetAlerts"
   enabled             = true
-  
+
   email_receiver {
     name                    = "NetworkAdmin"
     email_address           = var.alert_email
     use_common_alert_schema = true
   }
-  
+
   tags = var.tags
 }
 
@@ -40,17 +40,17 @@ resource "azurerm_monitor_activity_log_alert" "nsg_changes" {
   resource_group_name = var.resource_group_name
   scopes              = [data.azurerm_resource_group.main.id]
   description         = "Alert when NSG rules are modified"
-  
+
   criteria {
     category       = "Administrative"
     resource_type  = "Microsoft.Network/networkSecurityGroups"
     operation_name = "Microsoft.Network/networkSecurityGroups/write"
   }
-  
+
   action {
     action_group_id = azurerm_monitor_action_group.main.id
   }
-  
+
   tags = var.tags
 }
 
@@ -60,16 +60,16 @@ resource "azurerm_monitor_activity_log_alert" "vnet_changes" {
   resource_group_name = var.resource_group_name
   scopes              = [data.azurerm_resource_group.main.id]
   description         = "Alert when VNet configuration changes"
-  
+
   criteria {
     category       = "Administrative"
     resource_type  = "Microsoft.Network/virtualNetworks"
     operation_name = "Microsoft.Network/virtualNetworks/write"
   }
-  
+
   action {
     action_group_id = azurerm_monitor_action_group.main.id
   }
-  
+
   tags = var.tags
 }

@@ -35,7 +35,11 @@ Log Analytics - Centralized logging with KQL query support
 | Network Watcher | Network diagnostics | **FREE** |
 | Log Analytics Workspace | Centralized monitoring | **FREE** (5GB/month) |
 | Activity Log Alerts | Change monitoring | **FREE** |
-```
+
+This project focuses on free-tier networking only:
+- Virtual Network, Subnets, NSG, and Network Watcher
+- No VMs or Web Apps are provisioned
+
 ## 📐 Architecture
 
 ┌──────────────────────────────────────────┐

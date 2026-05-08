@@ -1,4 +1,4 @@
-﻿variable "resource_group_name" {
+variable "resource_group_name" {
   description = "Resource group name"
   type        = string
 }
@@ -30,6 +30,11 @@ variable "subnet_config" {
     address_prefixes = list(string)
     purpose          = string
   }))
+}
+
+variable "allowed_admin_ips" {
+  description = "Whitelisted public IPs allowed for SSH access"
+  type        = list(string)
 }
 
 variable "tags" {
